@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Web.UI;
 using System.Drawing;
+using System.Web.UI;
 
 namespace Lavalife
 {
@@ -10,20 +10,21 @@ namespace Lavalife
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Vide - événement automatiquement branché via le .aspx
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            // Validation côté serveur
+            lblMessage.Text = string.Empty;
+            lblMessage.ForeColor = Color.Red;
+
+            // 1) Validation serveur
             if (!Page.IsValid)
             {
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Text = "Formulaire invalide : remplis tous les champs obligatoires.";
+                lblMessage.Text = "Form is not valid.";
                 return;
             }
 
-            // Récupération des valeurs
+            // 2) Récupération des valeurs
             string firstName = txtFirstName.Text.Trim();
             string lastName = txtLastName.Text.Trim();
             string birthDateStr = txtBirthDate.Text.Trim();
@@ -33,34 +34,20 @@ namespace Lavalife
             string ethnicity = ddlEthnicity.SelectedValue;
             string reason = ddlReason.SelectedValue;
 
-            // Conversion de la date
+            // 3) Date
             if (!DateTime.TryParse(birthDateStr, out DateTime birthDate))
             {
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Text = "Date de naissance invalide (format: YYYY-MM-DD).";
+                lblMessage.Text = "Invalid birth date.";
                 return;
             }
 
-            // Validation de l'âge (18+)
-            int age = DateTime.Today.Year - birthDate.Year;
-            if (birthDate.Date > DateTime.Today.AddYears(-age)) age--;
-
-            if (age < 18)
-            {
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Text = "Tu dois avoir au moins 18 ans pour t'inscrire.";
-                return;
-            }
-
-            // Récupération de la ConnectionString
+            // 4) ConnectionString
             var cs = ConfigurationManager.ConnectionStrings["LavalifeConnectionString"];
             if (cs == null)
             {
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Text = "Erreur de configuration : ConnectionString introuvable.";
+                lblMessage.Text = "ConnectionString 'LavalifeConnectionString' not found in Web.config.";
                 return;
             }
-
             string connectionString = cs.ConnectionString;
 
             try
@@ -69,22 +56,21 @@ namespace Lavalife
                 {
                     conn.Open();
 
-                    // Requête SQL paramétrée (protection contre l'injection SQL)
+                    // ⚠️ TABLE : Users
                     string query = @"
-                        INSERT INTO [Users]
+                        INSERT INTO Users
                             (FirstName, LastName, BirthDate, Gender, Email, Password, EthnicGroup, Reason)
                         VALUES
                             (@FirstName, @LastName, @BirthDate, @Gender, @Email, @Password, @EthnicGroup, @Reason)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // 🔒 IMPORTANT: En production, hash le mot de passe avec BCrypt!
                         cmd.Parameters.AddWithValue("@FirstName", firstName);
                         cmd.Parameters.AddWithValue("@LastName", lastName);
                         cmd.Parameters.AddWithValue("@BirthDate", birthDate);
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@Email", email);
-                        cmd.Parameters.AddWithValue("@Password", password); // À hasher en prod!
+                        cmd.Parameters.AddWithValue("@Password", password); // à hasher plus tard
                         cmd.Parameters.AddWithValue("@EthnicGroup", ethnicity);
                         cmd.Parameters.AddWithValue("@Reason", reason);
 
@@ -92,43 +78,63 @@ namespace Lavalife
 
                         if (rows > 0)
                         {
-                            // ✅ SUCCÈS: Effacer le message et déclencher l'animation
-                            lblMessage.Text = string.Empty;
+                            lblMessage.ForeColor = Color.Green;
+                            lblMessage.Text = "Profile inserted in database.";
 
-                            // Appel de la fonction JavaScript pour l'animation + redirection
+                            // 🔥 Script complet : alert + Lottie + redirection
+                            string script = @"
+                                (function() {
+                                    // 1) Alert immédiat
+                                    alert('Profile created successfully!');
+
+                                    // 2) Affiche l’overlay
+                                    var overlay = document.getElementById('successOverlay');
+                                    if (overlay) {
+                                        overlay.style.display = 'flex';
+                                    }
+
+                                    // 3) Si Lottie est chargé, on joue l’animation
+                                    if (window.lottie) {
+                                        var anim = lottie.loadAnimation({
+                                            container: document.getElementById('lottieContainer'),
+                                            renderer: 'svg',
+                                            loop: false,
+                                            autoplay: true,
+                                            path: '" + ResolveUrl("~/Lottie/Love is blind.json") + @"'
+                                        });
+
+                                        anim.addEventListener('complete', function () {
+                                            setTimeout(function () {
+                                                window.location.href = '" + ResolveUrl("~/Login.aspx") + @"';
+                                            }, 1000);
+                                        });
+                                    } else {
+                                        // Si Lottie n’est pas dispo, on redirige direct
+                                        window.location.href = '" + ResolveUrl("~/Login.aspx") + @"';
+                                    }
+                                })();";
+
                             ClientScript.RegisterStartupScript(
                                 this.GetType(),
                                 "SuccessAnim",
-                                "showSuccessAndRedirect();",
+                                script,
                                 true
                             );
                         }
                         else
                         {
-                            lblMessage.ForeColor = Color.Red;
-                            lblMessage.Text = "Erreur: Aucune ligne insérée dans la base de données.";
+                            lblMessage.Text = "No row inserted (rows = 0).";
                         }
                     }
                 }
             }
             catch (SqlException ex)
             {
-                lblMessage.ForeColor = Color.Red;
-
-                // Gestion des erreurs SQL spécifiques
-                if (ex.Number == 2627 || ex.Number == 2601) // Clé dupliquée
-                {
-                    lblMessage.Text = "Cette adresse courriel est déjà utilisée.";
-                }
-                else
-                {
-                    lblMessage.Text = "Erreur SQL (" + ex.Number + "): " + ex.Message;
-                }
+                lblMessage.Text = $"SQL ERROR ({ex.Number}) : {ex.Message}";
             }
             catch (Exception ex)
             {
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Text = "Erreur inattendue: " + ex.Message;
+                lblMessage.Text = "ERROR : " + ex.Message;
             }
         }
     }
