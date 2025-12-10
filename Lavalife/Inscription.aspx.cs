@@ -56,7 +56,6 @@ namespace Lavalife
                 {
                     conn.Open();
 
-                    // ⚠️ TABLE : Users
                     string query = @"
                         INSERT INTO Users
                             (FirstName, LastName, BirthDate, Gender, Email, Password, EthnicGroup, Reason)
@@ -81,38 +80,39 @@ namespace Lavalife
                             lblMessage.ForeColor = Color.Green;
                             lblMessage.Text = "Profile inserted in database.";
 
-                            // 🔥 Script complet : alert + Lottie + redirection
+                            // 🔥 SOLUTION: Animation SANS alert, redirection automatique après 3-4 secondes
                             string script = @"
                                 (function() {
-                                    // 1) Alert immédiat
-                                    alert('Profile created successfully!');
-
-                                    // 2) Affiche l’overlay
+                                    // 1) Afficher l'overlay IMMÉDIATEMENT
                                     var overlay = document.getElementById('successOverlay');
                                     if (overlay) {
                                         overlay.style.display = 'flex';
                                     }
 
-                                    // 3) Si Lottie est chargé, on joue l’animation
+                                    // 2) Charger et jouer l'animation Lottie
                                     if (window.lottie) {
                                         var anim = lottie.loadAnimation({
                                             container: document.getElementById('lottieContainer'),
                                             renderer: 'svg',
-                                            loop: false,
-                                            autoplay: true,
+                                            loop: false,        // Joue UNE seule fois
+                                            autoplay: true,     // Démarre automatiquement
                                             path: '" + ResolveUrl("~/Lottie/Love is blind.json") + @"'
                                         });
 
-                                        anim.addEventListener('complete', function () {
-                                            setTimeout(function () {
+                                        // 3) Quand l'animation se termine → attendre 1.5s puis rediriger
+                                        anim.addEventListener('complete', function() {
+                                            setTimeout(function() {
                                                 window.location.href = '" + ResolveUrl("~/Login.aspx") + @"';
-                                            }, 1000);
+                                            }, 1500);
                                         });
                                     } else {
-                                        // Si Lottie n’est pas dispo, on redirige direct
-                                        window.location.href = '" + ResolveUrl("~/Login.aspx") + @"';
+                                        // Si Lottie ne charge pas, redirection après 3 secondes
+                                        setTimeout(function() {
+                                            window.location.href = '" + ResolveUrl("~/Login.aspx") + @"';
+                                        }, 3000);
                                     }
-                                })();";
+                                })();
+                            ";
 
                             ClientScript.RegisterStartupScript(
                                 this.GetType(),
