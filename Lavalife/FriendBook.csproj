@@ -141,6 +141,68 @@
     <Content Include="Global.asax" />
     <Content Include="Inscription.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Messages.aspx" />
+    <Content Include="Poseify-1.0.0\404.html" />
+    <Content Include="Poseify-1.0.0\about.html" />
+    <Content Include="Poseify-1.0.0\contact.html" />
+    <Content Include="Poseify-1.0.0\css\bootstrap.min.css" />
+    <Content Include="Poseify-1.0.0\css\style.css" />
+    <Content Include="Poseify-1.0.0\img\about.png" />
+    <Content Include="Poseify-1.0.0\img\amitie.jpg" />
+    <Content Include="Poseify-1.0.0\img\amour.jpg" />
+    <Content Include="Poseify-1.0.0\img\carousel-1.jpg" />
+    <Content Include="Poseify-1.0.0\img\carousel-2.jpg" />
+    <Content Include="Poseify-1.0.0\img\celebrite.jpg" />
+    <Content Include="Poseify-1.0.0\img\footer-bg.png" />
+    <Content Include="Poseify-1.0.0\img\networking.jpg" />
+    <Content Include="Poseify-1.0.0\img\service-1.jpg" />
+    <Content Include="Poseify-1.0.0\img\service-2.jpg" />
+    <Content Include="Poseify-1.0.0\img\service-3.jpg" />
+    <Content Include="Poseify-1.0.0\img\service-4.jpg" />
+    <Content Include="Poseify-1.0.0\img\team-1.jpg" />
+    <Content Include="Poseify-1.0.0\img\team-2.jpg" />
+    <Content Include="Poseify-1.0.0\img\team-3.jpg" />
+    <Content Include="Poseify-1.0.0\img\team-4.jpg" />
+    <Content Include="Poseify-1.0.0\img\team-5.jpg" />
+    <Content Include="Poseify-1.0.0\img\team-6.jpg" />
+    <Content Include="Poseify-1.0.0\img\team-7.jpg" />
+    <Content Include="Poseify-1.0.0\img\team-8.jpg" />
+    <Content Include="Poseify-1.0.0\img\testimonial-1.jpg" />
+    <Content Include="Poseify-1.0.0\img\testimonial-2.jpg" />
+    <Content Include="Poseify-1.0.0\img\testimonial-3.jpg" />
+    <Content Include="Poseify-1.0.0\index.html" />
+    <Content Include="Poseify-1.0.0\js\main.js" />
+    <Content Include="Poseify-1.0.0\lib\animate\animate.css" />
+    <Content Include="Poseify-1.0.0\lib\animate\animate.min.css" />
+    <Content Include="Poseify-1.0.0\lib\easing\easing.js" />
+    <Content Include="Poseify-1.0.0\lib\easing\easing.min.js" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\css\lightbox.css" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\css\lightbox.min.css" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\images\close.png" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\images\loading.gif" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\images\next.png" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\images\prev.png" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\js\lightbox.js" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\js\lightbox.min.js" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Poseify-1.0.0\lib\waypoints\waypoints.min.js" />
+    <Content Include="Poseify-1.0.0\lib\wow\wow.js" />
+    <Content Include="Poseify-1.0.0\lib\wow\wow.min.js" />
+    <Content Include="Poseify-1.0.0\LICENSE.txt" />
+    <Content Include="Poseify-1.0.0\Poseify.jpg" />
+    <Content Include="Poseify-1.0.0\READ-ME.txt" />
+    <Content Include="Poseify-1.0.0\service.html" />
+    <Content Include="Poseify-1.0.0\team.html" />
+    <Content Include="Poseify-1.0.0\testimonial.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -172,6 +234,9 @@
     <Content Include="app.config" />
     <Content Include="Lottie\Exit.json" />
     <Content Include="Lottie\Love_is_blind.json" />
+    <Content Include="Poseify-1.0.0\lib\lightbox\links.php" />
+    <Content Include="Poseify-1.0.0\lib\owlcarousel\LICENSE" />
+    <Content Include="Poseify-1.0.0\lib\waypoints\links.php" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -252,6 +317,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Messages.aspx.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messages.aspx.designer.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
