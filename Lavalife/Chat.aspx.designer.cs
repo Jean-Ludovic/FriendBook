@@ -11,7 +11,7 @@ namespace Lavalife
 {
 
 
-    public partial class Messages
+    public partial class Chat
     {
 
         /// <summary>
@@ -24,147 +24,111 @@ namespace Lavalife
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Contrôle lblUserInitial.
+        /// Contrôle ScriptManager1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserInitial;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// Contrôle lblWelcome.
+        /// Contrôle rptConversations.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWelcome;
+        protected global::System.Web.UI.WebControls.Repeater rptConversations;
 
         /// <summary>
-        /// Contrôle lblUserEmail.
+        /// Contrôle lblNoConversations.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserEmail;
+        protected global::System.Web.UI.WebControls.Label lblNoConversations;
 
         /// <summary>
-        /// Contrôle btnLogout.
+        /// Contrôle lblChatUserInitial.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.Label lblChatUserInitial;
 
         /// <summary>
-        /// Contrôle txtSearchName.
+        /// Contrôle lblChatUserName.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchName;
+        protected global::System.Web.UI.WebControls.Label lblChatUserName;
 
         /// <summary>
-        /// Contrôle ddlSearchGender.
+        /// Contrôle UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchGender;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Contrôle txtAgeMin.
+        /// Contrôle tmrRefresh.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgeMin;
+        protected global::System.Web.UI.Timer tmrRefresh;
 
         /// <summary>
-        /// Contrôle txtAgeMax.
+        /// Contrôle rptMessages.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgeMax;
+        protected global::System.Web.UI.WebControls.Repeater rptMessages;
 
         /// <summary>
-        /// Contrôle ddlSearchEthnicity.
+        /// Contrôle lblNoMessages.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchEthnicity;
+        protected global::System.Web.UI.WebControls.Label lblNoMessages;
 
         /// <summary>
-        /// Contrôle ddlSearchReason.
+        /// Contrôle hdnReceiverId.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchReason;
+        protected global::System.Web.UI.WebControls.HiddenField hdnReceiverId;
 
         /// <summary>
-        /// Contrôle btnSearch.
+        /// Contrôle txtMessage.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtMessage;
 
         /// <summary>
-        /// Contrôle lblNoResults.
+        /// Contrôle btnSend.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNoResults;
-
-        /// <summary>
-        /// Contrôle lblDebug.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDebug;
-
-        /// <summary>
-        /// Contrôle rptMembers.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptMembers;
-
-        /// <summary>
-        /// Contrôle lblProfileFirstName.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileFirstName;
-
-        /// <summary>
-        /// Contrôle lblProfileEmail.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileEmail;
+        protected global::System.Web.UI.WebControls.Button btnSend;
     }
 }
